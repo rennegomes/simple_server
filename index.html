@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostra Games</title>
+</head>
+<body>
+    <div style="background-color: aquamarine; padding: 5vh;">
+        <div>
+            <h1 style="text-align: center;">Ache o jogo</h1>
+        </div>
+        <div>
+        <forms>
+            <a onclick="searchGame()" style="background-color: azure; padding: 2vh;">buscar</a>
+        </forms>
+        </div>
+    </div>
+    <div id="mostra">
+
+    </div>
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="path-para-seu-script"></script>
+    <script>
+        function searchGame() {
+            $('#title').empty();
+            $('#type').empty();
+            $('#Age_rating').empty();
+            $('#description').empty();
+            $('#year').empty();
+
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "http://127.0.0.1:3000/game/",
+                "method": "GET"
+            }
+
+            // $.ajax(settings).done(function (response){
+            //     console.log(response);
+            //     $('#title').empty();
+            //     $('#type').empty();
+            //     $('#Age_rating').empty();
+            //     $('#description').empty();
+            //     $('#year').empty();
+            // });
+
+            // JSON.stringify(response)
+
+        //     $.ajax(settings).done(function (response){
+        //         console.log(response);
+
+        //         $('#title').empty();
+        //         $('#type').empty();
+        //         $('#Age_rating').empty();
+        //         $('#description').empty();
+        //         $('#year').empty();
+
+        //         for (let i = 0; i <= response.length; i++) {
+        //             const element = response[i].title;
+        //             document.getElementById("mostra").innerHTML = "<div><p>"+ element +"</p></div>"
+        //         }
+        //     });
+        // }
+            $.ajax(settings).done(function (response){
+                console.log(response);
+
+                $('#title').empty();
+                $('#type').empty();
+                $('#Age_rating').empty();
+                $('#description').empty();
+                $('#year').empty();
+
+                    document.getElementById("mostra").innerHTML = "<div><p>"+ JSON.stringify(response) +"</p></div>"
+            });
+            }
+    </script>
+</body>
+</html>
